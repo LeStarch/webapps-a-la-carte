@@ -9,7 +9,7 @@ server {
 
 	server_name weight-tracker;
 
-	root /var/www/weight-tracker;
+	root /var/www/webapps-a-la-carte/weight-tracker;
 	index index.html;
 
 	location / {

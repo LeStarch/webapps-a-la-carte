@@ -1,0 +1,3 @@
+[submodule "local-matrix-control/hdmi_matrix_control"]
+	path = local-matrix-control/hdmi_matrix_control
+	url = https://github.com/socallinuxexpo/hdmi_matrix_control

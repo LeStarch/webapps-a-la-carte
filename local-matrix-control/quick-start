@@ -1,0 +1,14 @@
+#!/bin/bash
+DIR=$(dirname $BASH_SOURCE)
+VENV="${DIR}/matrix-venv/bin/activate"
+if [ ! -f "${VENV}" ]
+then
+    python -m venv "${DIR}/matrix-ven"
+    . "${VENV}"
+    pip install "${DIR}/hdmi_matrix_control"
+else
+    . "${VENV}"
+fi
+cp "${DIR}/config/config.py" "${DIR}//hdmi_matrix_control/hdmi_matrix_control/config.py"
+nohup python -m hdmi_matrix_controller.daemon 2>/dev/null 1>/dev/null &
+FLASK_APP=hdmi_matrix_controller.web nohup flask run --host 127.0.0.1 2>/dev/null 1>/dev/null & 

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Matrix Manager</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="matrix.js"></script>
+</head>
+<body>
+    <div class="container-fluid vh-100 d-flex flex-column">
+    <!-- Inputs -->
+    <div class="row flex-grow-1">
+        <button id="0" class="mat-btn col-3 btn btn-primary" onclick="onInputClick(this.id)">
+            Spare 
+        </button>
+        <button id="1" class="mat-btn col-3 btn btn-primary" onclick="onInputClick(this.id)">
+            Laptop 2
+        </button>
+        <button id="2" class="mat-btn col-3 btn btn-primary" onclick="onInputClick(this.id)">
+            DVD Player
+        </button>
+        <button id="3" class="mat-btn col-3 btn btn-primary" onclick="onInputClick(this.id)">
+            Tower 2
+        </button>
+    </div>
+    <!-- Inputs -->
+    <div class="row flex-grow-1">
+        <button id="output/0" class="mat-btn col-3 btn btn-success" onclick="onOutputClick(this.id)">
+            TV
+        </button>
+        <button id="output/1" class="mat-btn col-3 btn btn-success" onclick="onOutputClick(this.id)">
+            Kitchen Monitor
+        </button>
+        <button id="output/2" class="mat-btn col-3 btn btn-success" onclick="onOutputClick(this.id)">
+            Auxiliary Monitor
+        </button>
+        <button id="output/3" class="mat-btn col-3 btn btn-success" onclick="onOutputClick(this.id)">
+            Secondary TV
+        </button>
+    </div>
+    </div>
+</body>
+</html>
