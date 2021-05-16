@@ -1,0 +1,64 @@
+<!-- index.html:
+
+Main entry point for the weight-tracker application. This application uses the following CDN based third part
+application:
+
+1. Bootstrap and popper
+2. Chart JS
+3. Chart JS data adaptor
+4. Hammer JS
+5. JQuery
+
+It also self-hosts the chart JS zoom plugin.
+-->
+<!doctype html>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js" integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js" integrity="sha256-uVEHWRIr846/vAdLJeybWxjPNStREzOlqLMXjW/Saeo=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@next/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+                crossorigin="anonymous"></script>
+        <script src="third/chartjs-plugin-zoom.js"></script>
+        <script src="js/index.js" type="module"></script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <h2>Mass Tracker</h2>
+            <ul class="nav nav-tabs" id="controlTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="mass-tab" data-bs-toggle="tab" data-bs-target="#mass" type="button" role="tab" aria-controls="mass" aria-selected="true">Mass</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="kcal-tab" data-bs-toggle="tab" data-bs-target="#kcal" type="button" role="tab" aria-controls="kcal" aria-selected="true">K Cal</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="controlTabContent">
+                <div class="tab-pane fade show active" id="mass" role="tabpanel" aria-labelledby="mass-tab">
+                    <div class="input-group">
+                        <span class="input-group-text">Mass</span>
+                        <input placeholder="mass" class="form-control" type="number" id="in-mass-number" min="50" max="300">
+                        <button class="btn btn-success" id="in-mass-btn">Submit</button>
+                    </div>
+                </div>
+                <div class="tab-pane fade show" id="kcal" role="tabpanel" aria-labelledby="kcal-tab">
+                    <div class="input-group">
+                        <span class="input-group-text">K Cal</span>
+                        <input placeholder="mass" class="form-control" type="number" id="in-kcal-number" min="0" max="3000">
+                        <button class="btn btn-success" id="in-kcal-btn">Submit</button>
+                    </div>
+                </div>
+            </div>
+            <div id="error-box" class="alert alert-danger" role="alert" hidden>
+            </div>
+            <div>
+                <canvas id="visualization">
+                </canvas>
+            </div>
+        </div>
+    </body>
+</html>

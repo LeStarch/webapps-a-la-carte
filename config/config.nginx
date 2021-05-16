@@ -1,0 +1,22 @@
+##
+# Weight Tracker:
+#
+# Server for configuration for the weight-tracker including internalized ElasticSearch proxy.
+##
+server {
+	listen 80;
+	listen [::]:80;
+
+	server_name weight-tracker;
+
+	root /var/www/weight-tracker;
+	index index.html;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+
+	location /elastic {
+		proxy_pass http://localhost:9200/;
+	}
+}
