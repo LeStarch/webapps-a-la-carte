@@ -17,6 +17,10 @@ server {
 	}
 
 	location /elastic {
-		proxy_pass http://localhost:9200/;
+		rewrite /elastic(.*) /$1  break;
+		proxy_pass http://<host>:9200;
+		proxy_redirect off;
+		proxy_set_header Host <host>;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 	}
 }
