@@ -3,12 +3,15 @@ DIR=$(dirname $BASH_SOURCE)
 VENV="${DIR}/matrix-venv/bin/activate"
 if [ ! -f "${VENV}" ]
 then
-    python -m venv "${DIR}/matrix-ven"
+    python3 -m venv "${DIR}/matrix-venv"
     . "${VENV}"
-    pip install "${DIR}/hdmi_matrix_control"
-else
-    . "${VENV}"
+    pip install pyzmq flask==1.0.2  pyserial flask-restful==0.3.7
 fi
-cp "${DIR}/config/config.py" "${DIR}//hdmi_matrix_control/hdmi_matrix_control/config.py"
-nohup python -m hdmi_matrix_controller.daemon 2>/dev/null 1>/dev/null &
-FLASK_APP=hdmi_matrix_controller.web nohup flask run --host 127.0.0.1 2>/dev/null 1>/dev/null & 
+cp "${DIR}/config/config.py" "${DIR}/hdmi_matrix_control/hdmi_matrix_controller/config.py"
+(
+    . "${VENV}"
+    cd "${DIR}/hdmi_matrix_control" || exit 2
+    rm nohup.out
+    nohup python -m hdmi_matrix_controller.daemon & #2>/dev/null 1>/dev/null &
+    FLASK_APP=hdmi_matrix_controller.web nohup flask run --host 127.0.0.1 & #2>/dev/null 1>/dev/null &
+) || echo "[ERROR] Failed to start HDMI matrix"
