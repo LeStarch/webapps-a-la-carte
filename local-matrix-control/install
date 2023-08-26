@@ -8,4 +8,6 @@ then
 fi
 apt install python3 python3-venv python3-pip nginx
 rm /etc/nginx/sites-enabled/default
-ln -s "${DIR}/config/config.nginx" /etc/nginx/sites-enabled/matrix
+mkdir -p /var/www/webapps-a-la-carte/local-matrix-control
+ln -fs "${DIR}/config/config.nginx" /etc/nginx/sites-enabled/matrix
+ln -fs "${DIR}" /var/www/webapps-a-la-carte/local-matrix-control
