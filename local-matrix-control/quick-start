@@ -1,13 +1,14 @@
 #!/bin/bash
 DIR=$(dirname $BASH_SOURCE)
 VENV="${DIR}/matrix-venv/bin/activate"
+(cd $DIR; git submodule update --init --recursive)
+
 if [ ! -f "${VENV}" ]
 then
     python3 -m venv "${DIR}/matrix-venv"
-    . "${VENV}"
 fi
 
-(cd $DIR; git submodule update --init --recursive)
+. "${VENV}"
 pip install -r "${DIR}/requirements.txt"
 
 cp "${DIR}/config/config.py" "${DIR}/hdmi_matrix_control/hdmi_matrix_controller/config.py"
