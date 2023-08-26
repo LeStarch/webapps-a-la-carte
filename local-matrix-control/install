@@ -11,3 +11,4 @@ rm /etc/nginx/sites-enabled/default
 mkdir -p /var/www/webapps-a-la-carte/local-matrix-control
 ln -fs "${DIR}/config/config.nginx" /etc/nginx/sites-enabled/matrix
 ln -fs "${DIR}" /var/www/webapps-a-la-carte/local-matrix-control
+echo "[INFO] Add "@reboot ${DIR}/quick-start" to crontab"
