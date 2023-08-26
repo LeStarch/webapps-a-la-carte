@@ -1,0 +1,11 @@
+#!/bin/bash
+DIR="`dirname $0`"
+DIR="`cd $DIR; pwd`"
+if [ "$EUID" -ne 0 ]
+then
+    echo "[WARNING] Must be run as root"
+    exit 1
+fi
+apt install python3 python3-venv python3-pip nginx
+rm /etc/nginx/sites-enabled/default
+ln -s "${DIR}/config/config.nginx" /etc/nginx/sites-enabled/matrix
