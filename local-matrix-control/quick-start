@@ -6,7 +6,7 @@ if [ ! -f "${VENV}" ]
 then
     python3 -m venv "${DIR}/matrix-venv"
     . "${VENV}"
-    pip install pyzmq flask==1.0.2  pyserial flask-restful==0.3.7
+    pip install -r "${DIR}/requirements.txt"
 fi
 cp "${DIR}/config/config.py" "${DIR}/hdmi_matrix_control/hdmi_matrix_controller/config.py"
 (
