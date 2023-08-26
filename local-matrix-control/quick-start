@@ -1,6 +1,7 @@
 #!/bin/bash
 DIR=$(dirname $BASH_SOURCE)
 VENV="${DIR}/matrix-venv/bin/activate"
+(cd $DIR; git submodule update --init --recursive)
 if [ ! -f "${VENV}" ]
 then
     python3 -m venv "${DIR}/matrix-venv"
